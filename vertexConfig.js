@@ -15,6 +15,7 @@ const visionModel = 'gemini-1.0-pro-vision';
 const vertexAI = new VertexAI({project: project, location: location, credentials:{
   client_email: process.env.GOOGLE_CLIENT_EMAIL,
   private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+  key: process.env.VERTEX_API_KEY
 }});
 
 // Instantiate Gemini models
