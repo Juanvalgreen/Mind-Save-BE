@@ -5,9 +5,9 @@ const Exam = require('../models/exam');
 const {generateUniqueNumber} = require('./utils');
 
 const addExam = async (req, res, next) => {
+    console.log(req);
     try {
         const data = req.body;
-        console.log(req);
         await setDoc(doc(firestore,'exams',generateUniqueNumber(data.userInfo.dateOfBirth)),data);
         res.json({message: 'record Saved'});
     } catch (error) {
