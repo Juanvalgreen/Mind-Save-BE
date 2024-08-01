@@ -4,13 +4,13 @@ const dotenv = require('dotenv');
 
 
 // Function to check if a string is Base64 encoded
-function isBase64(str) {
-    try {
-        return btoa(atob(str)) === str;
-    } catch (err) {
-        return false;
-    }
-}
+// function isBase64(str) {
+//     try {
+//         return btoa(atob(str)) === str;
+//     } catch (err) {
+//         return false;
+//     }
+// }
 
 async function handUpVerification(req, res) {
     console.log(req);
@@ -51,14 +51,14 @@ async function closesEyesVerification(req, res) {
     console.log(req);
     const {imageInput} = req.body;
     try {
-        let base64Image;
+        let base64Image= imageInput;;
 
-        if (isBase64(imageInput)) {
-            base64Image = imageInput;
-        } else {
-            // If it's not Base64 encoded, assume it's a file and convert it
-            base64Image = await getBase64(imageInput);
-        }
+        // if (isBase64(imageInput)) {
+        //     base64Image = imageInput;
+        // } else {
+        //     // If it's not Base64 encoded, return an error
+        //    throw new Error('Invalid base64 image');
+        // }
 
         // Prepare the parts for the request
         const filePart = { inline_data: { data: base64Image, mimeType: 'image/jpeg' } };
@@ -82,15 +82,6 @@ async function closesEyesVerification(req, res) {
     }
 }
 
-// Function to convert image to Base64
-function getBase64(file) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result.split(',')[1]); // remove the data URL prefix
-        reader.onerror = error => reject(error);
-    });
-}
 
 module.exports = {
     handUpVerification,
