@@ -43,7 +43,7 @@ async function handUpVerification(req, res) {
         res.json({response: contentResponse.candidates[0].content.parts[0].text});
     } catch (error) {
         console.error('Error:', error);
-        res.status(400).send(error.message);
+        res.status(400).json({error: error.message});
     }
 }
 
@@ -78,7 +78,7 @@ async function closesEyesVerification(req, res) {
         res.json({response: contentResponse.candidates[0].content.parts[0].text});
     } catch (error) {
         console.error('Error:', error);
-        res.status(400).send(error.message);
+        res.status(400).json({error: error.message});
     }
 }
 
