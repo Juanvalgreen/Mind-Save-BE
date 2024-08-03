@@ -7,12 +7,6 @@ async function handUpVerification(req, res) {
     try {
         let base64Image;
 
-        if (isBase64(imageInput)) {
-            base64Image = imageInput;
-        } else {
-            // If it's not Base64 encoded, assume it's a file and convert it
-            base64Image = await getBase64(imageInput);
-        }
 
         // Prepare the parts for the request
         const filePart = { inline_data: { data: base64Image, mimeType: 'image/jpeg' } };
@@ -42,14 +36,6 @@ async function closesEyesVerification(req, res) {
     console.log('Fragmento del base64 recibido:', imageInput.substring(0, 100));
     try {
         let base64Image= imageInput;
-
-        if (isBase64(imageInput)) {
-            base64Image = imageInput;
-        } else {
-            // If it's not Base64 encoded, return an error
-           throw new Error('Invalid base64 image');
-        }
-
         // Prepare the parts for the request
         const filePart = { inline_data: { data: imageInput, mimeType: 'image/jpeg' } };
         const instruction = 'Responde con si o no';
