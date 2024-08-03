@@ -28,7 +28,7 @@ async function handUpVerification(req, res) {
         const contentResponse = await streamingResult.response;
         
         // Log the response
-        console.log(contentResponse.candidates[0].content.parts[0].text);
+        // console.log(contentResponse.candidates[0].content.parts[0].text);
         res.json({response: contentResponse.candidates[0].content.parts[0].text});
     } catch (error) {
         console.error('Error:', error);
@@ -38,7 +38,8 @@ async function handUpVerification(req, res) {
 
 async function closesEyesVerification(req, res) {
     const {imageInput} = req.body;
-    console.log(imageInput);
+    console.log(typeof imageInput);
+    console.log('Fragmento del base64 recibido:', imageInput.substring(0, 100));
     try {
         let base64Image= imageInput;
 
@@ -63,7 +64,7 @@ async function closesEyesVerification(req, res) {
         const contentResponse = await streamingResult.response;
         
         // Log the response
-        console.log(contentResponse.candidates[0].content.parts[0].text);
+        // console.log(contentResponse.candidates[0].content.parts[0].text);
         res.json({response: contentResponse.candidates[0].content.parts[0].text});
     } catch (error) {
         console.error('Error:', error);
