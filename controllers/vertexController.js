@@ -2,18 +2,7 @@ const { response } = require('../app');
 const { generativeVisionModel } = require('../vertexConfig');
 const dotenv = require('dotenv');
 
-
-// Function to check if a string is Base64 encoded
-// function isBase64(str) {
-//     try {
-//         return btoa(atob(str)) === str;
-//     } catch (err) {
-//         return false;
-//     }
-// }
-
 async function handUpVerification(req, res) {
-    console.log(req);
     const {imageInput} = req.body;
     try {
         let base64Image;
@@ -48,20 +37,20 @@ async function handUpVerification(req, res) {
 }
 
 async function closesEyesVerification(req, res) {
-    console.log(req);
     const {imageInput} = req.body;
+    console.log(imageInput);
     try {
-        let base64Image= imageInput;;
+        let base64Image= imageInput;
 
-        // if (isBase64(imageInput)) {
-        //     base64Image = imageInput;
-        // } else {
-        //     // If it's not Base64 encoded, return an error
-        //    throw new Error('Invalid base64 image');
-        // }
+        if (isBase64(imageInput)) {
+            base64Image = imageInput;
+        } else {
+            // If it's not Base64 encoded, return an error
+           throw new Error('Invalid base64 image');
+        }
 
         // Prepare the parts for the request
-        const filePart = { inline_data: { data: base64Image, mimeType: 'image/jpeg' } };
+        const filePart = { inline_data: { data: imageInput, mimeType: 'image/jpeg' } };
         const instruction = 'Responde con si o no';
         const textPart = { text: 'Determina si la persona de esta imagen tiene loso ojos cerrados, Responde con si o no' };
         const request = {
