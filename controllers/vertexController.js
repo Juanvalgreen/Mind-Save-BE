@@ -31,9 +31,8 @@ async function handUpVerification(req, res) {
 }
 
 async function closesEyesVerification(req, res) {
+    console.log(req);
     const {imageInput} = req.body;
-    console.log(typeof imageInput);
-    console.log('Fragmento del base64 recibido:', imageInput.substring(0, 100));
     try {
         let base64Image= imageInput;
         // Prepare the parts for the request
