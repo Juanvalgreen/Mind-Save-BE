@@ -5,11 +5,8 @@ const dotenv = require('dotenv');
 async function handUpVerification(req, res) {
     const {imageInput} = req.body;
     try {
-        let base64Image;
-
-
         // Prepare the parts for the request
-        const filePart = { inline_data: { data: base64Image, mimeType: 'image/jpeg' } };
+        const filePart = { inline_data: { data: imageInput, mimeType: 'image/jpeg' } };
         const instruction = 'Responde con si o no';
         const textPart = { text: 'Determina si la persona de esta imagen tiene la mano leventada cerca del rostro, Responde con si o no' };
         const request = {
@@ -34,7 +31,6 @@ async function closesEyesVerification(req, res) {
     console.log(req);
     const {imageInput} = req.body;
     try {
-        let base64Image= imageInput;
         // Prepare the parts for the request
         const filePart = { inline_data: { data: imageInput, mimeType: 'image/jpeg' } };
         const instruction = 'Responde con si o no';
@@ -48,6 +44,7 @@ async function closesEyesVerification(req, res) {
         const streamingResult = await generativeVisionModel.generateContentStream(request);
         const contentResponse = await streamingResult.response;
         
+
         // Log the response
         // console.log(contentResponse.candidates[0].content.parts[0].text);
         res.json({response: contentResponse.candidates[0].content.parts[0].text});
