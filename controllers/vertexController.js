@@ -8,7 +8,7 @@ async function handUpVerification(req, res) {
         // Prepare the parts for the request
         const filePart = { inline_data: { data: imageInput, mimeType: 'image/jpeg' } };
         const instruction = 'Responde con si o no';
-        const textPart = { text: 'Determina si la persona de esta imagen tiene la mano leventada cerca del rostro, Responde con si o no' };
+        const textPart = { text: 'Determina si la persona de esta imagen tiene alguna mano leventada cerca del rostro, Responde con si o no' };
         const request = {
             system_instructions: instruction,
             contents: [{ role: 'user', parts: [textPart, filePart] }]
@@ -34,7 +34,7 @@ async function closesEyesVerification(req, res) {
         // Prepare the parts for the request
         const filePart = { inline_data: { data: imageInput, mimeType: 'image/jpeg' } };
         const instruction = 'Responde con si o no';
-        const textPart = { text: 'Determina si la persona de esta imagen tiene loso ojos cerrados, Responde con si o no' };
+        const textPart = { text: 'Determina si la persona de esta imagen tiene los ojos cerrados, Responde con si o no' };
         const request = {
             system_instructions: instruction,
             contents: [{ role: 'user', parts: [textPart, filePart] }]
