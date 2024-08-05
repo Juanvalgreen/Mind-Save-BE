@@ -24,7 +24,7 @@ const generativeModel = vertexAI.getGenerativeModel({
     // The following parameters are optional
     // They can also be passed to individual content generation requests
     safetySettings: [{category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT, threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE}],
-    generationConfig: {maxOutputTokens: 256},
+    generationConfig: {maxOutputTokens: 660},
   });
 
 const generativeVisionModel = vertexAI.getGenerativeModel({

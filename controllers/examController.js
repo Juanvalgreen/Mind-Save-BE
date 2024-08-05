@@ -3,13 +3,19 @@
 const {firestore, doc, setDoc} = require('../db');
 const Exam = require('../models/exam');
 const {generateUniqueNumber} = require('./utils');
+const {generateAnalysis} = require('./vertexController');
 
 const addExam = async (req, res, next) => {
     console.log(req);
     try {
         const data = req.body;
-        await setDoc(doc(firestore,'exams',generateUniqueNumber(data.userInfo.dateOfBirth)),data);
-        res.json({message: 'record Saved'});
+        const resultAnalysis = await generateAnalysis(data);
+
+        await setDoc(doc(firestore,'exams',generateUniqueNumber(data.userInfo.dateOfBirth)),{examResult: data, resultAnalysis: resultAnalysis});
+        res.json({
+            message: 'record Saved', 
+            response: resultAnalysis
+        });
     } catch (error) {
         res.status(400).send(error.message);
     }
