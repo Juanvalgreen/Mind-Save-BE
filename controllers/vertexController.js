@@ -103,7 +103,8 @@ async function generateAnalysis(examResults) {
 async function sentenceVerification(req, res) {
     const {sentence} = req.body;
     
-    const prompt = ` determina si esta frase tiene sentido gramaticalmente ${sentence}, responde con si o no`;
+    const prompt = `Respondiendo unicamente con las palabras si o no, determina si esta frase tiene sentido gramaticalmentey esta completa
+    Frase:${sentence}`;
     const instruction = 'Responde con si o no';
 
     try{    
