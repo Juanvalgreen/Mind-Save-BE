@@ -17,7 +17,6 @@
     "firebase-admin": "^12.2.0",
     "http-errors": "~1.6.3",
     "jimp": "^0.22.12",
-    "opencv-build": "^0.1.9",
     "pkg-config": "^1.1.1",
     "sharp": "^0.33.4",
     "svg-path-parser": "^1.1.0"
