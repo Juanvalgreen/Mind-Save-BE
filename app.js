@@ -6,7 +6,6 @@ const cookieParser = require('cookie-parser');
 const config = require('./config');
 
 const examsRouter = require('./routes/exams');
-const shapesRouter = require('./routes/shapes'); 
 const vertexRouter = require('./routes/vertex'); 
 
 
@@ -19,7 +18,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api', examsRouter);
-app.use('/shapes', shapesRouter);
 app.use('/vertex', vertexRouter);
 
 
