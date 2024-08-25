@@ -20,7 +20,7 @@ async function handUpVerification(req, res) {
         const contentResponse = await streamingResult.response;
         
         // Log the response
-        // console.log(contentResponse.candidates[0].content.parts[0].text);
+        console.log(contentResponse.candidates[0].content.parts[0].text);
         res.json({response: contentResponse.candidates[0].content.parts[0].text});
     } catch (error) {
         console.error('Error:', error);
@@ -47,7 +47,7 @@ async function closesEyesVerification(req, res) {
         
 
         // Log the response
-        // console.log(contentResponse.candidates[0].content.parts[0].text);
+        console.log(contentResponse.candidates[0].content.parts[0].text);
         res.json({response: contentResponse.candidates[0].content.parts[0].text});
     } catch (error) {
         console.error('Error:', error);
@@ -89,7 +89,7 @@ async function generateAnalysis(examResults) {
         // Parse the cleaned JSON string
         const jsonResponse = JSON.parse(parseResult);
 
-        console.log('Response: ', jsonResponse);
+        // console.log('Response: ', jsonResponse);
 
         return jsonResponse;
     }catch(error){
